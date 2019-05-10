@@ -1,7 +1,9 @@
 package co.sofka.examples.demoSaludadora;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.text.NumberFormat;
 
@@ -26,6 +28,13 @@ public class DemoSaludadoraApplication {
 		System.out.println("Max memory: " + format.format(maxMemory / mb) + mega);
 		System.out.println("Total free memory: " + format.format((freeMemory + (maxMemory - allocatedMemory)) / mb) + mega);
 		System.out.println("=================================================================");
+	}
+
+	@Bean
+	public CommandLineRunner lineRunner() {
+		return args -> {
+			printInfo();
+		};
 	}
 
 }
